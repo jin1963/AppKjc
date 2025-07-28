@@ -16,29 +16,5 @@ async function connectWallet() {
 
       kjcToken = new web3.eth.Contract(erc20ABI, kjcAddress);
     } catch (e) {
-      console.error(e);
-      document.getElementById("walletAddress").innerText = "❌ เชื่อมต่อล้มเหลว";
-    }
-  } else {
-    alert("⚠️ ไม่พบ Wallet เช่น MetaMask หรือ Bitget");
-  }
-}
-
-async function approveKJC() {
-  if (!web3 || !userAccount || !kjcToken) {
-    alert("❌ กรุณาเชื่อมต่อกระเป๋าก่อน");
-    return;
-  }
-
-  try {
-    await kjcToken.methods.approve(spenderAddress, approveAmount).send({ from: userAccount });
-    alert("✅ อนุมัติสำเร็จแล้ว!");
-  } catch (e) {
-    console.error("Approve error:", e);
-    if (e.code === 4001) {
-      alert("❌ คุณปฏิเสธการอนุมัติ");
-    } else {
-      alert("❌ เกิดข้อผิดพลาดในการ Approve");
-    }
-  }
-}
+      console.error(e
+      document
