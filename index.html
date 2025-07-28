@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Approve KJC Token</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="erc20Abi.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>🎯 ระบบ Approve KJC Token</h2>
+
+    <button onclick="connectWallet()">🔗 เชื่อมต่อกระเป๋า</button>
+    <p id="walletAddress">❌ ยังไม่เชื่อมต่อกระเป๋า</p>
+
+    <button onclick="approveKJC()">✅ อนุมัติ KJC ให้ Smart Contract</button>
+  </div>
+</body>
+</html>
