@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Approve KJC Token</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="erc20Abi.js"></script>
+  <script src="main.js"></script>
+  <style>
+    body {
+      background: #eee;
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: black;
+      color: gold;
+      border-radius: 10px;
+      text-align: center;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🎯 ระบบ Approve KJC Token</h2>
+
+    <button onclick="connectWallet()">🔗 เชื่อมต่อกระเป๋า</button>
+    <p id="walletAddress">❌ ยังไม่เชื่อมต่อกระเป๋า</p>
+
+    <button onclick="approveKJC()">✅ อนุมัติ KJC ให้ Smart Contract</button>
+  </div>
+
+</body>
+</html>
