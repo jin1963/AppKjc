@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Approve KJC</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="erc20Abi.js"></script> <!-- อย่าลืมสร้างไฟล์นี้ -->
+</head>
+<body>
+  <h2>🎯 ระบบ Approve KJC Token</h2>
+
+  <button onclick="connectWallet()">🔗 เชื่อมต่อกระเป๋า</button>
+  <p id="walletAddress">❌ ยังไม่เชื่อมต่อกระเป๋า</p>
+
+  <button onclick="approveKJC()">✅ อนุมัติ KJC ให้ Smart Contract</button>
+
+  <script>
+    const kjcAddress = "0xd479Ae350Dc24168E8dB863c5413C35fb2044ecD";
+    const spenderAddress = "0xBaeF58FC0Eb20334b2fDEC4882e2AB972C1242DE";
+    const approveAmount = "1000000000000000000000000"; // 1,000,000 KJC
+
+    let web3;
+    let user;
+    let kjcToken;
+
+    async function connectWallet() {
+      if (window.ethereum || window.bitkeep?.ethereum) {
+        window.web3 = new Web3(window.ethereum || window.bitkeep.ethereum);
+        const accounts = await web3.eth.requestAccounts();
+        user = accounts[0];
+        kjcToken = new web3.eth.Contract(erc20ABI, kjcAddress);
+        document.getElementById("walletAddress").innerText = "✅ " + user;
+      } else {
+        alert("❌ กรุณาติดตั้ง MetaMask หรือ Bitget Wallet");
+      }
+    }
+
+    async function approveKJC() {
+      if (!web3 || !user || !kjcToken) {
+        alert("❌ กรุณาเชื่อมต่อกระเป๋าก่อน");
+        return;
+      }
+
+      try {
+        await kjcToken.methods.approve(spenderAddress, approveAmount).send({ from: user });
+        alert("✅ อนุมัติสำเร็จแล้ว!");
+      } catch (error) {
+        console.error(error);
+        alert("❌ อนุมัติไม่สำเร็จ");
+      }
+    }
+  </script>
+</body>
+</html>
